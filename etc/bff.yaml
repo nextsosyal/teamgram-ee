@@ -1,0 +1,209 @@
+Name: bff.bff
+ListenOn: 127.0.0.1:20010
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: bff.bff
+Timeout: 0
+Log:
+  ServiceName: bff.bff
+  Mode: file
+  Path: ../logs/bff
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20011
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: bff.bff
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+#MiniHttp:
+#  Name: bff.bff.minihttp
+#  Host: 0.0.0.0
+#  Port: 20011
+
+Cache:
+  - Host: localhost:6379
+KV:
+  - Host: localhost:6379
+#Cache:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+#
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+
+MessageSharding: 8
+#ChannelMessageSharding: 8
+
+Code:
+  Name: "none"
+  SendCodeUrl: "http://127.0.0.1:30001/api/send"
+  VerifyCodeUrl: ""
+  Key: "authorization"
+  Secret: "Bearer 0b3CitWx779qo1t1RDEvIQeyxYr2Gz"
+  RegionId: ""
+
+SignInServiceNotification:
+  - Param: "New login."
+    EntityType: "messageEntityBold"
+  - TextFormat: "Dear %s, we detected a login into your account from a new device on %s.\n\nDevice: %s\nLocation: %s (IP = "
+    TextA:
+      - "#name"
+      - "#now"
+      - "#client"
+      - "#region"
+    Param: "#clientIp"
+    EntityType: "messageEntityTextUrl"
+  - TextFormat: ")\n\nIf this wasn't you, you can terminate that session in "
+    Param: "Settings > Devices"
+    EntityType: "messageEntityBold"
+  - TextFormat: " (or "
+    Param: "Privacy & Security > Active Sessions"
+    EntityType: "messageEntityBold"
+  - TextFormat: ")."
+
+SignInMessage:
+  - TextFormat: "Login code: "
+    Param: "#code"
+    EntityType: "messageEntityBold"
+  - TextFormat: ". Do "
+    Param: "not"
+    EntityType: "messageEntityBold"
+  - TextFormat: " give this code to anyone, even if they say they are from %s!\n\nThis code can be used to log in to your %s account. We never ask it for anything else.\n\n  If you didn't request this code by trying to log in on another device, simply ignore this message."
+    TextA:
+      - "#app_name"
+      - "#app_name"
+
+BizServiceClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+  Timeout: 0
+AuthSessionClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.authsession
+MediaClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.media
+  Timeout: 0
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+MsgClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.msg
+  Timeout: 0
+ChannelmsgClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.channelmsg
+  Timeout: 0
+DfsClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.dfs
+  Timeout: 0
+StatusClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.status
+TwofaClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.twofa
+  Timeout: 0
+PushClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.push
+WebpageClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.webpage
+
+SyncClient:
+  Topic:   "Sync-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+ChannelSyncClient:
+  Topic:   "ChannelSync-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+HistoryttlClient:
+  Host: 127.0.0.1:6379
+  Type: node
+
+PollClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.poll
+
+ScheduledmessageClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.scheduledmessage
+
+AdminLogClient:
+  Topic:   "AdminLog-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+NotifySyncClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.notify
+NotifyAsyncClient:
+  Topic:   "Notify-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+StoryqClient:
+  Topic:   "Storyq-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+StaticMap:
+  Name: "yandex"
+  Key: ""
+  Proxy: "http://127.0.0.1:7890"

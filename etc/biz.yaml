@@ -1,0 +1,72 @@
+Name: service.biz_service
+ListenOn: 127.0.0.1:20020
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: service.biz_service
+Timeout: 0
+Log:
+  ServiceName: service.biz_service
+  Mode: file
+  Path: ../logs/biz
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20021
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: service.biz_service
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Cache:
+  - Host: localhost:6379
+KV:
+  - Host: localhost:6379
+#
+#Cache:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+#
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true&clientFoundRows=true
+  ReadDSN:
+    - root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true&clientFoundRows=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+  #DisableStmtLog: false
+
+MessageSharding: 8
+#ChannelMessageSharding: 8
+
+MediaClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.media
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+PollClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.poll

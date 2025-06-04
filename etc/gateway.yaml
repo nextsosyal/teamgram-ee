@@ -1,0 +1,45 @@
+Name: interface.gateway
+ListenOn: 127.0.0.1:20110
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: interface.gateway
+Log:
+  ServiceName: interface.gateway
+  Mode: file
+  Path: ../logs/gateway
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20111
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: interface.gateway
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+KeyFile: "./server_pkcs1.key"
+KeyFingerprint: "12240908862933197005"
+MaxProc: 4
+
+Server:
+  Addrs:
+    - 0.0.0.0:10443
+    - 0.0.0.0:5222
+    #- 0.0.0.0:8801
+  ServerName: interface.gateway
+  ProtoName: mtproto
+  SendBuf: 65536
+  ReceiveBuf: 65536
+  Keepalive: false
+  SendChanSize: 1024
+  Multicore: false
+
+Session:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: interface.session

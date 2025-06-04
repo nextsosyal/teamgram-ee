@@ -1,0 +1,57 @@
+Name: service.twofa
+ListenOn: 127.0.0.1:20440
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: service.twofa
+Timeout: 0
+Log:
+  ServiceName: service.twofa
+  Mode: file
+  Path: ../logs/twofa
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20441
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: service.twofa
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+Cache:
+  - Host: 127.0.0.1:6379
+#Cache:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+IdgenClient:
+  #  Endpoints:
+  #    - 127.0.0.1:20660
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+
+Mail:
+  Host: "smtp.qq.com"
+  Port: 465
+  Username: "15069338@qq.com"
+  Password: "uoeoguzhuonibiff"
+  From: "15069338@qq.com"
+  ConfirmSubject: "Your Code - %s"
+  ConfirmCodeTemplate: "Your code is: %s. Use it to verify your email and activate two-step verification in Teamgram Messenger.\n\nIf you didn't request this, simply ignore this message.\n\nYours,\nThe Teamgram Team"
+  RecoverySubject: "Your Recovery Code - %s"
+  RecoveryCodeTemplate: "Your code is: %s. Use it to disable your password and access your Teamgram account.\n\nIf you didn't request to restore access to your account, go to Teamgram Settings > Devices (or Privacy & Security > Active Sessions) and terminate any sessions you don’t recognize.\n\nYours,\nThe Teamgram Team"

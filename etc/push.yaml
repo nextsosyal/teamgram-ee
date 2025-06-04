@@ -1,0 +1,88 @@
+Name: messenger.push
+ListenOn: 127.0.0.1:20400
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: messenger.push
+Log:
+  ServiceName: messenger.push
+  Mode: file
+  Path: ../logs/push
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20401
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: messenger.push
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+Cache:
+  - Host: 127.0.0.1:6379
+    Type: node
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+PushConsumer:
+  Topics:
+    - "Push-T"
+  Brokers:
+    - 127.0.0.1:9092
+  Group: "Push-MainCommunity-S"
+
+#PushApns:
+#  Cert: "apns_pem_dev.cert"
+#  Key:  "apns_pem_dev.key"
+#  BoundId: "com.zy.wegram1"
+#  Development: true
+
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+
+AuthsessionClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.authsession
+
+WebPushFCM:
+  VAPIDPublicKey: "BFxTDcn81cm6w_pBEbV-Gg4jz9J6uUU6LcXtHebyZbD6dsXkL2NLe2DuXcWqpluO4qHOxuRXaOw5TkwBTs46skY"
+  VAPIDPrivateKey: "sFHn5meKLJ2J0n0H4ME6EkTK-CuvJOu3y0dhqASTAvc"
+  Subscriber: teamgram.io@gmail.com
+  TTL: 30
+
+UserClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+
+PushFCM:
+  Key: "AAAAannPCsk:APA91bHQbMVoXsN30NU2xCCtb04ll48V8zEJP7IZ_tSW81bQM2ls65aXJ4uQygYkWVc0LbnsUbWcO7bC5wxsrJ5GIanmr2zFJ66Jd-vj921cmdn2S8LXyb2AjYGzUi5eNWkX0eKkE4hB"
+  Timeout: 5
+  ServerURL: "https://fcm.googleapis.com/fcm/send"
+
+#PushFCMV1:
+#  DryRun: false
+#  CredentialsFile: "./telegram-140e4-86db9e88e8be.json"
+#  TimeToLive: 30
+
+#PushHMS:
+#  AppId: "xxxxxxxxxxx"
+#  AppSecret: "xxxxxxxxxxx"

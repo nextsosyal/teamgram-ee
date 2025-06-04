@@ -1,0 +1,12 @@
+Name: interface.wsserver
+Host: 0.0.0.0
+Port: 11443
+Timeout: 0
+MaxBytes: 67108864
+Log:
+  ServiceName: interface.wsserver
+  Mode: file
+  Path: ../logs/wsserver
+  Level: debug
+
+GatewayClient: 127.0.0.1:10443

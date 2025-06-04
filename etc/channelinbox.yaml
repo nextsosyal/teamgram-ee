@@ -1,0 +1,107 @@
+Name: messenger.channelinbox
+ListenOn: 127.0.0.1:23030
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: messenger.channelinbox
+Timeout: 0
+Log:
+  ServiceName: messenger.channelinbox
+  Mode: file
+  Path: ../logs/channelinbox
+  Level: debug
+  MaxContentLength: 256
+  Stat: false
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 22031
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: messenger.channelinbox
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+Cache:
+  - Host: localhost:6379
+KV:
+  - Host: 127.0.0.1:6379
+#Cache:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+InboxConsumer:
+  Topics:
+    - "Channelinbox-T"
+  Brokers:
+    - 127.0.0.1:9092
+  Group: "Channelinbox-MainCommunity-S"
+
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+
+UserClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+ChatClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+ChannelClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+DialogClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+
+SyncClient:
+  Topic:   "Sync-T"
+  Brokers:
+    - 127.0.0.1:9092
+ChannelSyncClient:
+  Topic:   "ChannelSync-T"
+  Brokers:
+    - 127.0.0.1:9092
+BotSyncClient:
+  Topic:   "BotSync-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+PushClient:
+  Topic:   "Push-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+StatusClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.status

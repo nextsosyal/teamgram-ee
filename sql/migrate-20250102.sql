@@ -1,0 +1,1 @@
+ALTER TABLE `bots` ADD `has_menu_button` BOOLEAN NOT NULL DEFAULT FALSE AFTER `bot_active_users`, ADD `menu_button_text` VARCHAR(256) NOT NULL DEFAULT '' AFTER `has_menu_button`, ADD `menu_button_url` VARCHAR(256) NOT NULL DEFAULT '' AFTER `menu_button_text`;

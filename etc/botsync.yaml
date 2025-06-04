@@ -1,0 +1,83 @@
+Name: messenger.botsync
+ListenOn: 127.0.0.1:20420
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: messenger.botsync
+Log:
+  ServiceName: messenger.botsync
+  Mode: file
+  Path: ../logs/botsync
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20421
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: messenger.botsync
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+BotSyncConsumer:
+  Topics:
+    - "BotSync-T"
+  Brokers:
+    - 127.0.0.1:9092
+  Group: "BotSync-MainCommunity-S"
+
+Routine:
+  Chan: 16
+  Size: 100
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+Cache:
+  - Host: 127.0.0.1:6379
+KV:
+  - Host: 127.0.0.1:6379
+#Cache:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+StatusClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.status
+BotwayClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: interface.botway
+
+BotFatherClient:
+  Topic:   "BotFather-T"
+  Brokers:
+    - 127.0.0.1:9092
+
+BotGifClient:
+  Topic:   "BotGif-T"
+  Brokers:
+    - 127.0.0.1:9092

@@ -1,0 +1,93 @@
+Name: bff.premium
+ListenOn: 127.0.0.1:21720
+Timeout: 0
+
+Rest:
+  Name: bff.premiumhttp
+  Host: 0.0.0.0
+  Port: 18888
+
+Log:
+  ServiceName: bff.premium
+  Mode: file
+  Path: /opt/data/teamgram/logs/premium
+  Level: debug
+
+BizServiceClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+  Timeout: 0
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+
+UserClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+  Timeout: 0
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: bff.premium
+
+KV:
+  - Host: 127.0.0.1:6379
+
+TosURL: "https://sendsmessenger.co/en/terms-of-service"
+PrivacyURL: "https://sendsmessenger.co/en/term-and-privacy-policy"
+RestoreURL: "sends://restore_purchases"
+
+DfsClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.dfs
+  Timeout: 0
+
+MediaClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.media
+  Timeout: 0
+
+VideoSectionDocIds:
+  AppIcons: 1904240464530247680
+  NoAds: 0
+  VoiceToText: 0
+  FasterDownload: 1904240454040293376
+  ProfileBadge: 1904240461216747520
+  MoreUpload: 1904240463599112192
+  AdvancedChatManagement: 0
+  AnimatedUserpics: 1904240455617351680
+  AnimatedEmoji: 1904240454984011776
+  InfiniteReactions: 1904240456875642880
+  EmojiStatus: 1904240456250691584
+  Translations: 1904240462135300096
+  PeerColors: 1904240459736158208
+  Wallpapers: 0
+  SavedTags: 1904240462915440640
+  LastSeen: 1904240458121351168
+  MessagePrivacy: 0
+  GreetingMessage: 0
+  AwayMessage: 0
+  QuickReplies: 0
+  FolderTags: 0
+  BusinessBots: 0
+  BusinessHours: 0
+  BusinessLocation: 0
+  BusinessIntro: 0
+  BusinessLinks: 0
+  Effects: 1904240459002155008
+  PremiumStickers: 1904240460516298752
+
+AndroidPackageName: com.sends.messenger
+ServiceAccountFile: "/opt/data/teamgram/bin/service-account.json"

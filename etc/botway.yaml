@@ -1,0 +1,141 @@
+Name: interface.botway
+ListenOn: 127.0.0.1:21040
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: interface.botway
+Log:
+  ServiceName: interface.botway
+  Mode: file
+  Path: ../logs/botway
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 21041
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: interface.botway
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Http:
+  Name: interface.botway.http
+  Host: 0.0.0.0
+  Port: 10081
+  Timeout: 120000
+  MaxBytes: 67108864
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+
+AuthsessionClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.authsession
+StatusClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.status
+DfsClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.dfs
+
+Minio:
+  Endpoint: localhost:9000
+  AccessKeyID: minio
+  SecretAccessKey: miniostorage
+  UseSSL: false
+
+BFFProxyClients:
+  Clients:
+    - Etcd:
+        Hosts:
+          - 127.0.0.1:2379
+        Key: bff.bff
+      Timeout: 0
+    - Etcd:
+        Hosts:
+          - 127.0.0.1:2379
+        Key: bff.phone
+      Timeout: 0
+    - Etcd:
+        Hosts:
+          - 127.0.0.1:2379
+        Key: bff.bots
+      Timeout: 0
+  IDMap:
+    "/mtproto.RPCTos": "bff.bff"
+    "/mtproto.RPCReports": "bff.bff"
+    "/mtproto.RPCConfiguration": "bff.bff"
+    "/mtproto.RPCQrCode": "bff.bff"
+    "/mtproto.RPCMiscellaneous": "bff.bff"
+    "/mtproto.RPCAuthorization": "bff.bff"
+    "/mtproto.RPCGdpr": "bff.bff"
+    "/mtproto.RPCGifs": "bff.bff"
+    "/mtproto.RPCPromoData": "bff.bff"
+    "/mtproto.RPCTsf": "bff.bff"
+    "/mtproto.RPCTwoFa": "bff.bff"
+    "/mtproto.RPCSeamless": "bff.bff"
+    "/mtproto.RPCVoipCalls": "bff.phone"
+    "/mtproto.RPCChannels": "bff.bff"
+    "/mtproto.RPCChatInvites": "bff.bff"
+    "/mtproto.RPCChats": "bff.bff"
+    "/mtproto.RPCDeepLinks": "bff.bff"
+    "/mtproto.RPCFiles": "bff.bff"
+    "/mtproto.RPCWebPage": "bff.bff"
+    "/mtproto.RPCSecretChats": "bff.bff"
+    "/mtproto.RPCPassport": "bff.bff"
+    "/mtproto.RPCUpdates": "bff.bff"
+    "/mtproto.RPCInlineBot": "bff.bots"
+    "/mtproto.RPCBots": "bff.bots"
+    "/mtproto.RPCInternalBot": "bff.bots"
+    "/mtproto.RPCThemes": "bff.bff"
+    "/mtproto.RPCContacts": "bff.bff"
+    "/mtproto.RPCCreditCards": "bff.bff"
+    "/mtproto.RPCDialogs": "bff.bff"
+    "/mtproto.RPCDrafts": "bff.bff"
+    "/mtproto.RPCEmoji": "bff.bff"
+    "/mtproto.RPCFolders": "bff.bff"
+    "/mtproto.RPCGames": "bff.bff"
+    "/mtproto.RPCGroupCalls": "bff.phone"
+    "/mtproto.RPCImportedChats": "bff.bff"
+    "/mtproto.RPCLangpack": "bff.bff"
+    "/mtproto.RPCAutoDownload": "bff.bff"
+    "/mtproto.RPCMessageThreads": "bff.bff"
+    "/mtproto.RPCReactions": "bff.bff"
+    "/mtproto.RPCMessages": "bff.bff"
+    "/mtproto.RPCNotification": "bff.bff"
+    "/mtproto.RPCUsers": "bff.bff"
+    "/mtproto.RPCPayments": "bff.bff"
+    "/mtproto.RPCPolls": "bff.bff"
+    "/mtproto.RPCScheduledMessages": "bff.bff"
+    "/mtproto.RPCNsfw": "bff.bff"
+    "/mtproto.RPCSponsoredMessages": "bff.bff"
+    "/mtproto.RPCProxyData": "bff.bff"
+    "/mtproto.RPCStatistics": "bff.bff"
+    "/mtproto.RPCStickers": "bff.bff"
+    "/mtproto.RPCAccount": "bff.bff"
+    "/mtproto.RPCPhotos": "bff.bff"
+    "/mtproto.RPCUsernames": "bff.bff"
+    "/mtproto.RPCWallpapers": "bff.bff"
+    "/mtproto.RPCTranslate": "bff.bff"
+    "/mtproto.RPCRingtone": "bff.bff"
+    "/mtproto.RPCCustomEmojis": "bff.bff"
+    "/mtproto.RPCPremium": "bff.bff"
+    "/mtproto.RPCTranscription": "bff.bff"
+    "/mtproto.RPCBotMenu": "bff.bots"
+    "/mtproto.RPCWebview": "bff.bots"
+    "/mtproto.RPCBotAdminRight": "bff.bots"
+    "/mtproto.RPCBotMenuButton": "bff.bots"
+    "/mtproto.RPCEmojiStatus": "bff.bff"
+    "/mtproto.RPCBiz": "bff.bff"

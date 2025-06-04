@@ -1,0 +1,72 @@
+Name: bff.bots
+ListenOn: 127.0.0.1:20240
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: bff.bots
+Timeout: 0
+Log:
+  ServiceName: bff.bots
+  Mode: file
+  Path: ../logs/bots
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20241
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: bff.bots
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+KV:
+  - Host: 127.0.0.1:6379
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+MsgClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.msg
+  Timeout: 0
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+BizServiceClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+  Timeout: 0
+BotfatherClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: bots.botfather
+  Timeout: 0
+BotgifClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: bots.gif
+  Timeout: 0
+
+SyncClient:
+  Topic:   "Sync-T"
+  Brokers:
+    - 127.0.0.1:9092
+BotSyncClient:
+  Topic:   "BotSync-T"
+  Brokers:
+    - 127.0.0.1:9092

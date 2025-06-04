@@ -1,0 +1,103 @@
+Name: bff.phone
+ListenOn: 127.0.0.1:20040
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: bff.phone
+Log:
+  ServiceName: bff.phone
+  Mode: file
+  Path: /opt/data/teamgram/logs/phone
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20041
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: bff.phone
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+KV:
+  - Host: localhost:6379
+#KV:
+#  - Host: 127.0.0.1:7000
+#    Type: cluster
+#  - Host: 127.0.0.1:7001
+#    Type: cluster
+#  - Host: 127.0.0.1:7002
+#    Type: cluster
+
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+
+IdgenClient:
+  #  Endpoints:
+  #    - 127.0.0.1:20660
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen
+BizServiceClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+SfuClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: teamcalls.sfu
+
+SyncClient:
+  Topic:   "Sync-T"
+  Brokers:
+    - 127.0.0.1:9092
+MsgClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.msg
+ChannelmsgClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: messenger.channelmsg
+DfsClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.dfs
+  Timeout: 0
+MediaClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.media
+  Timeout: 0
+
+WebrtcConnections:
+  - Turn: true
+    Stun: true
+    Ip: "43.155.11.190"
+    Ipv6: ""
+    Port: 3478
+    Username: "nebula.chat"
+    Password: "12345678"
+  - Turn: true
+    Stun: true
+    Ip: "43.154.117.16"
+    Ipv6: ""
+    Port: 3478
+    Username: "nebula.chat"
+    Password: "12345678"
+
+RtmpConfig:
+  Rtmp: 127.0.0.1:1935
+  HttpApi: 127.0.0.1:8090

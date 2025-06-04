@@ -1,0 +1,37 @@
+Name: teamcalls.relay
+ListenOn: 0.0.0.0:21768
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: teamcalls.relay
+Log:
+  ServiceName: teamcalls.relay
+  Mode: file
+  Path: ../logs/relay
+  Level: debug
+##监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 20111
+#  Path: /metrics
+##链路追踪
+#Telemetry:
+#  Name: interface.gateway
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+RelayIp: 127.0.0.1
+RelayPort: 50001
+RelayServer:
+  Name: relay
+  ProtoName: rudp
+  Addr: :50001
+SendBuf: 4096
+ReceiveBuf: 4096
+
+IdgenClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.idgen

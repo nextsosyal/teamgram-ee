@@ -1,0 +1,31 @@
+FROM golang:1.20.14 AS builder
+WORKDIR /opt/data/teamgram
+COPY . .
+RUN ./build-phone.sh
+
+FROM ubuntu:22.04
+WORKDIR /opt/data/teamgram
+COPY --from=builder /opt/data/teamgram/ /opt/data/teamgram/
+
+# Install dependencies.
+RUN \
+	set -x \
+	&& apt-get update \
+	&& apt-get install --yes \
+	   bash-completion wget curl subversion screen gcc g++ cmake ninja-build golang \
+	   autoconf libtool apache2 python3-pip python3-dev pkg-config zlib1g-dev \
+	   libgss-dev libssl-dev libxml2-dev nasm libarchive-dev make automake \
+	   libdbus-1-dev libboost-dev autoconf-archive bash-completion python3-yaml \
+	   clang ffmpeg
+
+ENV LANG="C.UTF-8"
+ENV CC="clang"
+ENV CXX="clang++"
+
+WORKDIR /opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker
+RUN make
+
+WORKDIR /opt/data/teamgram
+
+RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh
+ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
