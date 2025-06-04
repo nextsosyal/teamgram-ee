@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `bot_preview_media` (
   UNIQUE KEY `bot_id` (`bot_id`,`media_type`,`media_id`),
   KEY `bot_id_2` (`bot_id`),
   KEY `bot_id_3` (`bot_id`,`lang_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `saved_reactions` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`user_message_box_id`,`chosen_order`),
   KEY `user_id_2` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

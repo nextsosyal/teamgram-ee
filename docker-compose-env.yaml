@@ -81,8 +81,9 @@ services:
       - teamgram_net
 
   mysql:
-    image: mysql:5.7.42
-    #image: arm64v8/mysql
+    image: ibex/debian-mysql-server-5.7
+    # image: mysql:5.7.42
+    # image: arm64v8/mysql:5.7
     # image: mysql/mysql-server:5.7
     container_name: mysql
     environment:

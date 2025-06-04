@@ -87,4 +87,5 @@ etc/biz2.yaml
 src/*
 !src/.gitkeeper
 
-data/mysql
+data/*
+!data/.gitkeeper

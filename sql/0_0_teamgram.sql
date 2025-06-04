@@ -1589,7 +1589,7 @@ CREATE TABLE IF NOT EXISTS `emoji_keywords` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `lang_code_2` (`lang_code`,`keyword`),
   KEY `lang_code` (`lang_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1604,7 +1604,7 @@ CREATE TABLE IF NOT EXISTS `emoji_languages` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `lang_code` (`lang_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1644,7 +1644,7 @@ CREATE TABLE IF NOT EXISTS `emoji_status` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `document_id` (`document_id`),
   UNIQUE KEY `import_document_id` (`import_document_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1663,7 +1663,7 @@ CREATE TABLE IF NOT EXISTS `encrypted_files` (
   `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2788,7 +2788,7 @@ CREATE TABLE IF NOT EXISTS `ringtones` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_2` (`user_id`,`ringtone_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
