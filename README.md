@@ -30,3 +30,23 @@ docker-compose -f ./docker-compose-env.yaml up -d
 # run docker-compose
 docker-compose -f ./docker-compose-phone.yaml up -d
 ```
+
+## sfu
+
+```
+TransportListenIp: 127.0.0.1 #192.168.10.105
+
+SFUConf:
+  #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
+  #WorkerBin: "/Users/wubenqi/go/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Debug/mediasoup-worker"
+  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
+  NumWorkers: 1
+  WebRtcTransportListenIps:
+    - Ip: 172.20.0.2 #192.168.10.105 #192.168.1.150
+      AnnouncedIp: 192.168.10.106 #192.168.10.105 #192.168.1.150
+  PlainTransportListenIp:
+    Ip: 172.20.0.2 #192.168.10.105 #192.168.1.150
+    AnnouncedIp: 192.168.10.106 #192.168.10.105 #192.168.1.150
+  WebRtcMinPort: 55000
+  WebRtcMaxPort: 55600
+```
