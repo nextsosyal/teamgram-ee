@@ -42,11 +42,15 @@ SFUConf:
   WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
-    - Ip: 172.20.0.2 #192.168.10.105 #192.168.1.150
-      AnnouncedIp: 192.168.10.106 #192.168.10.105 #192.168.1.150
+    - Ip: 172.20.0.2 # Internal IP for Docker
+      AnnouncedIp: 192.168.10.106 # Public IP
   PlainTransportListenIp:
-    Ip: 172.20.0.2 #192.168.10.105 #192.168.1.150
-    AnnouncedIp: 192.168.10.106 #192.168.10.105 #192.168.1.150
+    Ip: 172.20.0.2 # Internal IP for Docker
+    AnnouncedIp: 192.168.10.106 # Public IP
   WebRtcMinPort: 55000
   WebRtcMaxPort: 55600
 ```
+
+**Note:** need to manually modify the `IP` and `AnnouncedIp` and restart all services
+
+
