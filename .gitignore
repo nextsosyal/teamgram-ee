@@ -45,11 +45,12 @@ bin/*
 !/bin/echo2.sh
 !/bin/server_pkcs1.key
 !/bin/worker/.gitkeeper
+!/bin/coturn/.gitkeeper
 !/bin/runall2-enterprise.sh
 !/bin/runall2-enterprise-channel.sh
 !/bin/runall2-enterprise-channel-phone.sh
 !/bin/runall2-phone.sh
-!/bin/certs
+!/bin/runall2-docker-phone.sh
 
 linux/*
 !/linux/config.json
