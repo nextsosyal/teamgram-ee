@@ -42,7 +42,6 @@ bin/*
 !/bin/GeoLite2-Country.mmdb
 !/bin/killall.sh
 !/bin/runall2.sh
-!/bin/echo2.sh
 !/bin/server_pkcs1.key
 !/bin/coturn/
 !/bin/coturn/.gitkeeper
