@@ -31,7 +31,7 @@ Cache:
 #  - Host: 127.0.0.1:7002
 #    Type: cluster
 
-TransportListenIp: 127.0.0.1 #192.168.10.105
+TransportListenIp: 0.0.0.0 # internal IP
 
 SFUConf:
   #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
@@ -39,10 +39,10 @@ SFUConf:
   WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
-    - Ip: 127.0.0.1 #192.168.10.105 #192.168.1.150 // internal IP
-      AnnouncedIp: 192.168.10.105 #192.168.10.105 #192.168.1.150 // internet IP
+    - Ip: 0.0.0.0 # internal IP
+      AnnouncedIp: 192.168.10.105 # internet/public IP
   PlainTransportListenIp:
-    Ip: 127.0.0.1 #192.168.10.105 #192.168.1.150 // internal IP
-    AnnouncedIp: 192.168.10.105 #192.168.10.105 #192.168.1.150 // internet IP
+    Ip: 0.0.0.0 # internal IP
+    AnnouncedIp: 192.168.10.105 # internet/public IP
   WebRtcMinPort: 55000
   WebRtcMaxPort: 55600
