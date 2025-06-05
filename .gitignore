@@ -44,13 +44,16 @@ bin/*
 !/bin/runall2.sh
 !/bin/echo2.sh
 !/bin/server_pkcs1.key
-!/bin/worker/.gitkeeper
+!/bin/coturn/
 !/bin/coturn/.gitkeeper
 !/bin/runall2-enterprise.sh
 !/bin/runall2-enterprise-channel.sh
 !/bin/runall2-enterprise-channel-phone.sh
 !/bin/runall2-phone.sh
 !/bin/runall2-docker-phone.sh
+!/bin/worker/
+!/bin/worker/.gitkeeper
+/bin/worker/mediasoup-worker
 
 linux/*
 !/linux/config.json
