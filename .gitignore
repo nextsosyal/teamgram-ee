@@ -54,16 +54,6 @@ bin/*
 !/bin/worker/.gitkeeper
 /bin/worker/mediasoup-worker
 
-linux/*
-!/linux/config.json
-!/linux/GeoLite2-City.mmdb
-!/linux/GeoLite2-Country.mmdb
-!/linux/killall.sh
-!/linux/runall2.sh
-!/linux/echo2.sh
-!/linux/server_pkcs1.key
-!/linux/worker/.gitkeeper
-
 /teamcall/
 /test_data2/
 /demo.mp4
