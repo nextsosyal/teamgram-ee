@@ -34,7 +34,7 @@ docker-compose -f ./docker-compose-phone.yaml up -d
 ## sfu
 
 ```
-TransportListenIp: 127.0.0.1 #192.168.10.105
+TransportListenIp: 0.0.0.0
 
 SFUConf:
   #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
@@ -42,15 +42,15 @@ SFUConf:
   WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
-    - Ip: 172.20.0.2 # Internal IP for Docker
-      AnnouncedIp: 192.168.10.106 # Public IP
+    - Ip: 0.0.0.0
+      AnnouncedIp: 192.168.10.106 # Internet or Public IP
   PlainTransportListenIp:
-    Ip: 172.20.0.2 # Internal IP for Docker
-    AnnouncedIp: 192.168.10.106 # Public IP
+    Ip: 0.0.0.0
+    AnnouncedIp: 192.168.10.106 # Internet or Public IP
   WebRtcMinPort: 55000
   WebRtcMaxPort: 55600
 ```
 
-**Note:** need to manually modify the `IP` and `AnnouncedIp` and restart all services
+**Note:** need to manually modify the `AnnouncedIp` and restart all services
 
 
