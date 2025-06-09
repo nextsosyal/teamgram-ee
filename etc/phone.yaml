@@ -90,13 +90,6 @@ WebrtcConnections:
     Port: 3478
     Username: "nebula.chat"
     Password: "12345678"
-  - Turn: true
-    Stun: true
-    Ip: "43.154.117.16"
-    Ipv6: ""
-    Port: 3478
-    Username: "nebula.chat"
-    Password: "12345678"
 
 RtmpConfig:
   Rtmp: 127.0.0.1:1935
