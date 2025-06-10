@@ -38,6 +38,7 @@ createConfigs() {
 createConfigs
 
 cd /opt/data/teamgram/bin
-./runall2-docker-phone.sh
+#./runall2-docker-phone.sh
+./runall2-docker-enterprise-phone.sh
 
 tail -f /dev/null

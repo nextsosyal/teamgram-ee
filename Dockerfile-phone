@@ -1,7 +1,7 @@
 FROM golang:1.20.14 AS builder
 WORKDIR /opt/data/teamgram
 COPY . .
-RUN ./build-enterprise-phone.sh
+RUN ./build-phone.sh
 
 FROM ubuntu:22.04
 WORKDIR /opt/data/teamgram
