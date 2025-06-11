@@ -86,3 +86,10 @@ PushFCM:
 #PushHMS:
 #  AppId: "xxxxxxxxxxx"
 #  AppSecret: "xxxxxxxxxxx"
+
+#UseTPNS: true
+#TPNSBoundId: "com.voltmessenger"
+#TPNSDevelopment: false
+#TPNSVoipBoundId: ""
+#TPNSHosts:
+#  - "http://127.0.0.1:8088/api/push"

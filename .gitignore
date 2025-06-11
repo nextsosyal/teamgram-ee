@@ -42,6 +42,7 @@ bin/*
 !/bin/GeoLite2-Country.mmdb
 !/bin/killall.sh
 !/bin/runall2.sh
+!/bin/turn.sh
 !/bin/server_pkcs1.key
 !/bin/coturn/
 !/bin/coturn/.gitkeeper
@@ -50,6 +51,7 @@ bin/*
 !/bin/runall2-enterprise-channel-phone.sh
 !/bin/runall2-phone.sh
 !/bin/runall2-docker-phone.sh
+!/bin/runall2-docker-enterprise-phone.sh
 !/bin/worker/
 !/bin/worker/.gitkeeper
 /bin/worker/mediasoup-worker
