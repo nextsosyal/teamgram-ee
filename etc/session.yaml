@@ -157,7 +157,7 @@ BFFProxyClients:
     "/mtproto.RPCSmsjobs": "bff.bff"
     "/mtproto.RPCPrivacySettings": "bff.bff"
     "/mtproto.RPCSavedMessageDialogs": "bff.bff"
-    "/mtproto.RPCUserProfile": "bff.bff"
+    "/mtproto.RPCUserChannelProfiles": "bff.bff"
     #"/mtproto.RPCBusinessChatLinks": "bff.bff"
     #"/mtproto.RPCBusinessGreetings": "bff.bff"
     #"/mtproto.RPCBusinessIntro": "bff.bff"

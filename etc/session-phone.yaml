@@ -93,7 +93,7 @@ BFFProxyClients:
     #"/mtproto.RPCWallpapers": "bff.bff"
     "/mtproto.RPCSavedMessageDialogs": "bff.bff"
     "/mtproto.RPCPrivacySettings": "bff.bff"
-    "/mtproto.RPCUserProfile": "bff.bff"
+    "/mtproto.RPCUserChannelProfiles": "bff.bff"
     "/mtproto.RPCVoipCalls": "bff.phone"
     "/mtproto.RPCGroupCalls": "bff.phone"
     "/mtproto.RPCSecretChats": "bff.bff"
