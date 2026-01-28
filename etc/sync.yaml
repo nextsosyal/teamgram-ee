@@ -56,6 +56,12 @@ KV:
 #  - Host: 127.0.0.1:7002
 #    Type: cluster
 
+PushNotification:
+  Enabled: ${PUSH_ENABLED:true}
+  NotificationService: ${NOTIFICATION_BASE_URL}
+  Key: ${NOTIFICATION_KEY}
+  Secret: ${NOTIFICATION_SECRET}
+
 IdgenClient:
   Etcd:
     Hosts:

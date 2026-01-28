@@ -109,17 +109,19 @@ sleep 1
 #nohup ./bots -f=../etc2/bots.yaml >> ../logs/bots.log  2>&1 &
 #sleep 1
 
-echo "run phone ..."
-nohup ./phone -f=../etc2/phone.yaml >> ../logs/phone.log  2>&1 &
-sleep 1
-
 echo "run bff ..."
 nohup ./bff -predefined=false -predefined2=false -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc2/bff.yaml >> ../logs/bff.log  2>&1 &
-sleep 5
+echo "Waiting for bff to register with etcd..."
+sleep 15
+
+echo "run phone ..."
+nohup ./phone -f=../etc2/phone.yaml >> ../logs/phone.log  2>&1 &
+echo "Waiting for phone to register with etcd..."
+sleep 15
 
 echo "run session ..."
 nohup ./session -f=../etc2/session-enterprise-phone.yaml >> ../logs/session.log  2>&1 &
-sleep 1
+sleep 5
 
 echo "run gateway ..."
 #nohup ./gateway -f=../etc2/gateway.yaml >> ../logs/gateway.log  2>&1 &

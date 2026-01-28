@@ -141,6 +141,7 @@ services:
 
 networks:
   teamgram_net:
+    name: teamgram-server_teamgram_net
     driver: bridge
     ipam:
       config:

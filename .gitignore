@@ -79,7 +79,6 @@ etc/biz2.yaml
 /bin4/
 /bin5/
 
-src/*
 !src/.gitkeeper
 
 data/*

@@ -2,7 +2,7 @@ Name: bff.bff
 ListenOn: 127.0.0.1:20010
 Etcd:
   Hosts:
-    - 127.0.0.1:2379
+    - etcd:2379
   Key: bff.bff
 Timeout: 0
 Log:
@@ -28,9 +28,9 @@ Log:
 #  Port: 20011
 
 Cache:
-  - Host: localhost:6379
+  - Host: redis:6379
 KV:
-  - Host: localhost:6379
+  - Host: redis:6379
 #Cache:
 #  - Host: 127.0.0.1:7000
 #    Type: cluster
@@ -48,21 +48,26 @@ KV:
 #    Type: cluster
 
 Mysql:
-  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Addr: mysql:3306
+  DSN: root:@tcp(mysql:3306)/teamgram?charset=utf8mb4&parseTime=true
   Active: 64
   Idle: 64
   IdleTimeout: 4h
+  QueryTimeout: 5s
+  ExecTimeout: 5s
+  TranTimeout: 5s
 
-MessageSharding: 8
+MessageSharding: 1
 #ChannelMessageSharding: 8
 
 Code:
-  Name: "none"
-  SendCodeUrl: "http://127.0.0.1:30001/api/send"
+  Name: ${CODE_NAME}
+  SendCodeUrl: ${NOTIFICATION_BASE_URL}
   VerifyCodeUrl: ""
-  Key: "authorization"
-  Secret: "Bearer 0b3CitWx779qo1t1RDEvIQeyxYr2Gz"
+  Key: ${NOTIFICATION_KEY}
+  Secret: ${NOTIFICATION_SECRET}
   RegionId: ""
+  BypassCode: "${BYPASS_CODE}"
 
 SignInServiceNotification:
   - Param: "New login."
@@ -98,110 +103,110 @@ SignInMessage:
 BizServiceClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.biz_service
   Timeout: 0
 AuthSessionClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.authsession
 MediaClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.media
   Timeout: 0
 IdgenClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.idgen
 MsgClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.msg
   Timeout: 0
 ChannelmsgClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.channelmsg
   Timeout: 0
 DfsClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.dfs
   Timeout: 0
 StatusClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.status
 TwofaClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.twofa
   Timeout: 0
 PushClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.push
 WebpageClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.webpage
 
 SyncClient:
   Topic:   "Sync-T"
   Brokers:
-    - 127.0.0.1:9092
+    - kafka:9092
 
 ChannelSyncClient:
   Topic:   "ChannelSync-T"
   Brokers:
-    - 127.0.0.1:9092
+    - kafka:9092
 
 HistoryttlClient:
-  Host: 127.0.0.1:6379
+  Host: redis:6379
   Type: node
 
 PollClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: service.poll
 
 ScheduledmessageClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.scheduledmessage
 
 AdminLogClient:
   Topic:   "AdminLog-T"
   Brokers:
-    - 127.0.0.1:9092
+    - kafka:9092
 
 NotifySyncClient:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - etcd:2379
     Key: messenger.notify
 NotifyAsyncClient:
   Topic:   "Notify-T"
   Brokers:
-    - 127.0.0.1:9092
+    - kafka:9092
 
 StoryqClient:
   Topic:   "Storyq-T"
   Brokers:
-    - 127.0.0.1:9092
+    - kafka:9092
 
 StaticMap:
   Name: "yandex"

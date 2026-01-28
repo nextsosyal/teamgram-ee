@@ -34,9 +34,7 @@ Cache:
 TransportListenIp: 0.0.0.0 # internal IP
 
 SFUConf:
-  #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
-  #WorkerBin: "/Users/wubenqi/go/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Debug/mediasoup-worker"
-  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
+  WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
     - Ip: 0.0.0.0 # internal IP

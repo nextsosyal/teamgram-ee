@@ -1,7 +1,11 @@
-FROM golang:1.20.14 AS builder
+FROM golang:1.21 AS builder
 WORKDIR /opt/data/teamgram
 COPY . .
-RUN ./build-phone.sh
+# Windows CRLF -> Unix LF dönüşümü
+RUN sed -i 's/\r$//' ./build-phone.sh && \
+    sed -i 's/\r$//' ./bin/*.sh && \
+    sed -i 's/\r$//' ./docker/*.sh && \
+    chmod +x ./build-phone.sh && ./build-phone.sh
 
 FROM ubuntu:22.04
 WORKDIR /opt/data/teamgram
@@ -12,20 +16,27 @@ RUN \
 	set -x \
 	&& apt-get update \
 	&& apt-get install --yes \
-	   bash-completion wget curl subversion screen gcc g++ cmake ninja-build golang \
+	   bash-completion wget curl subversion screen gcc g++ cmake ninja-build \
 	   autoconf libtool apache2 python3-pip python3-dev pkg-config zlib1g-dev \
 	   libgss-dev libssl-dev libxml2-dev nasm libarchive-dev make automake \
 	   libdbus-1-dev libboost-dev autoconf-archive bash-completion python3-yaml \
-	   vim net-tools psmisc clang ffmpeg coturn psmisc vim
+	   vim net-tools psmisc clang ffmpeg coturn psmisc vim \
+	&& rm -rf /var/lib/apt/lists/*
+
+# Install Go 1.21 (required for slices package)
+RUN wget -q https://go.dev/dl/go1.21.13.linux-amd64.tar.gz \
+	&& tar -C /usr/local -xzf go1.21.13.linux-amd64.tar.gz \
+	&& rm go1.21.13.linux-amd64.tar.gz
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+ENV GOROOT="/usr/local/go"
 
 ENV LANG="C.UTF-8"
 ENV CC="clang"
 ENV CXX="clang++"
 
-WORKDIR /opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker
-RUN make
+RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh && \
+    chmod +x /opt/data/teamgram/bin/*.sh && \
+    mkdir -p /opt/data/teamgram/logs /opt/data/teamgram/etc2
 
-WORKDIR /opt/data/teamgram
-
-RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh
-ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
+ENTRYPOINT ["/opt/data/teamgram/docker/entrypoint.sh"]

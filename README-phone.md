@@ -25,7 +25,7 @@ git clone https://repo.teamgram.io/teamgram-server/mediasoup.git
 WebrtcConnections:
   - Turn: true
     Stun: true
-    Ip: "43.155.11.190" ### change to your server ip
+    Ip: "213.250.137.204" ### change to your server ip
     Ipv6: ""
     Port: 3478
     Username: "nebula.chat"

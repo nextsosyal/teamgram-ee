@@ -4,7 +4,7 @@ Mysql:
   Idle: 64
   IdleTimeout: 4h
 
-MessageSharding: 8
+MessageSharding: 1
 
 IdgenClient:
   Etcd:
