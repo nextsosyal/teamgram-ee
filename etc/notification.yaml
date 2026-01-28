@@ -1,0 +1,32 @@
+Name: bff.notification
+ListenOn: 0.0.0.0:21580
+Etcd:
+  Hosts:
+    - etcd:2379
+  Key: bff.notification
+
+Mysql:
+  Addr: mysql:3306
+  DSN: root:@tcp(mysql:3306)/teamgram?charset=utf8mb4&parseTime=true
+  Active: 64
+  Idle: 64
+  IdleTimeout: 4h
+  QueryTimeout: 5s
+  ExecTimeout: 5s
+  TranTimeout: 5s
+
+UserClient:
+  Etcd:
+    Hosts:
+      - etcd:2379
+    Key: service.biz_service
+ChatClient:
+  Etcd:
+    Hosts:
+      - etcd:2379
+    Key: service.biz_service
+SyncClient:
+  Topic: "Sync-T"
+  Brokers:
+    - kafka:9092
+

@@ -52,7 +52,7 @@ Mysql:
   IdleTimeout: 4h
   #DisableStmtLog: false
 
-MessageSharding: 8
+MessageSharding: 1
 #ChannelMessageSharding: 8
 
 MediaClient:

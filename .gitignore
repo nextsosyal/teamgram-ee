@@ -36,6 +36,11 @@ test_data/*
 record_data/*
 !record_data/.gitkeeper
 
+nginx/
+
+SSL/
+ssl/
+
 bin/*
 !/bin/config.json
 !/bin/GeoLite2-City.mmdb
@@ -101,3 +106,4 @@ src/*
 # allow teamgram.io path
 !src/teamgram.io
 !src/teamgram.io/**
+

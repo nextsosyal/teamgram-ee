@@ -1,7 +1,7 @@
-FROM golang:1.20.14 AS builder
+FROM golang:1.21 AS builder
 WORKDIR /opt/data/teamgram
 COPY . .
-RUN ./build-enterprise-phone.sh
+RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
 
 FROM ubuntu:22.04
 WORKDIR /opt/data/teamgram
@@ -22,10 +22,6 @@ ENV LANG="C.UTF-8"
 ENV CC="clang"
 ENV CXX="clang++"
 
-WORKDIR /opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker
-RUN make
-
-WORKDIR /opt/data/teamgram
 
 RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh
 ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
