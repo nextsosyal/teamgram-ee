@@ -4,6 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile-phone
     restart: always
+    environment:
+      - CODE_NAME=${CODE_NAME}
+      - NOTIFICATION_BASE_URL=${NOTIFICATION_BASE_URL}
+      - NOTIFICATION_KEY=${NOTIFICATION_KEY}
+      - NOTIFICATION_SECRET=${NOTIFICATION_SECRET}
+      - PUSH_ENABLED=${PUSH_ENABLED:-true}
+      - BYPASS_CODE=${BYPASS_CODE}
     ports:
       - "10443:10443"
       - "11443:11443"

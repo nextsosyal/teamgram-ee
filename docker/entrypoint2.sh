@@ -15,6 +15,19 @@ export MINIO_SECRET=${MINIO_SECRET:-"miniostorage"}
 export MINIO_SSL=${MINIO_SSL:-"false"}
 #export MTZ=${MTZ:-"Asia%2FTehran"}
 
+export CODE_NAME=${CODE_NAME:-"none"}
+
+# Notification environment variables
+export NOTIFICATION_BASE_URL=${NOTIFICATION_BASE_URL:-""}
+export NOTIFICATION_KEY=${NOTIFICATION_KEY:-""}
+export NOTIFICATION_SECRET=${NOTIFICATION_SECRET:-""}
+
+# Push Notification (Hermes) environment variables
+export PUSH_ENABLED=${PUSH_ENABLED:-"true"}
+
+# Bypass Code environment variables
+export BYPASS_CODE=${BYPASS_CODE:-""}
+
 # create configs from config templates.
 createConfigs() {
   CONFIG_TARGET_DIR=/opt/data/teamgram/etc2
@@ -31,6 +44,12 @@ createConfigs() {
       | sed 's#UseSSL: false#UseSSL: '"$MINIO_SSL"'#g' \
       | sed "s#localhost:9000#$MINIO_URI#g" \
       | sed "s#127.0.0.1:9092#$KAFKA_HOST#g" \
+      | sed 's#\${CODE_NAME}#'"$CODE_NAME"'#g' \
+      | sed 's#\${NOTIFICATION_BASE_URL}#'"$NOTIFICATION_BASE_URL"'#g' \
+      | sed 's#\${NOTIFICATION_KEY}#'"$NOTIFICATION_KEY"'#g' \
+      | sed 's#\${NOTIFICATION_SECRET}#'"$NOTIFICATION_SECRET"'#g' \
+      | sed 's#\${PUSH_ENABLED:[^}]*}#'"$PUSH_ENABLED"'#g' \
+      | sed 's#\${BYPASS_CODE}#'"$BYPASS_CODE"'#g' \
       | cat > $CONFIG_TARGET_DIR/$file
   done
 }
