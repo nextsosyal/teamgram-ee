@@ -1,0 +1,3 @@
+[submodule "src/github.com/teamgram/teamgram-server"]
+	path = src/github.com/teamgram/teamgram-server
+	url = https://github.com/nextsosyal/teamgram-server

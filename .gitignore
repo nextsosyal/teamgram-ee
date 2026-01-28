@@ -81,6 +81,23 @@ etc/biz2.yaml
 
 src/*
 !src/.gitkeeper
+!src/github.com/teamgram
+!src/github.com/teamgram/**
+!src/teamgram.io/**
 
 data/*
 !data/.gitkeeper
+# ignore everything under src
+src/*
+
+# allow src root marker
+!src/.gitkeeper
+
+# allow github.com path
+!src/github.com
+!src/github.com/teamgram
+!src/github.com/teamgram/**
+
+# allow teamgram.io path
+!src/teamgram.io
+!src/teamgram.io/**
