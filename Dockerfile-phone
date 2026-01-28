@@ -3,7 +3,7 @@ WORKDIR /opt/data/teamgram
 COPY . .
 RUN chmod +x ./build-phone.sh && ./build-phone.sh
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 WORKDIR /opt/data/teamgram
 COPY --from=builder /opt/data/teamgram/ /opt/data/teamgram/
 
