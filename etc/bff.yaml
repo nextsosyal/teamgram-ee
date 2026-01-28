@@ -48,7 +48,6 @@ KV:
 #    Type: cluster
 
 Mysql:
-  Addr: 127.0.0.1:3306
   DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
   Active: 64
   Idle: 64
