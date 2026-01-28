@@ -22,7 +22,7 @@ ENV LANG="C.UTF-8"
 ENV CC="clang"
 ENV CXX="clang++"
 
-WORKDIR /opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker
+WORKDIR /opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party2/mediasoup/worker
 RUN make
 
 WORKDIR /opt/data/teamgram
