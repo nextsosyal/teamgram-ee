@@ -88,15 +88,15 @@ WebrtcConnections:
     Ip: "213.250.137.204"
     Ipv6: ""
     Port: 3478
-    Username: "nebula.chat"
-    Password: "12345678"
+    Username: "tekir.turn"
+    Password: "EbFf6vxO6mcVuXPF"
   - Turn: true
     Stun: true
     Ip: "213.250.137.204"
     Ipv6: ""
     Port: 3478
-    Username: "nebula.chat"
-    Password: "12345678"
+    Username: "tekir.turn"
+    Password: "EbFf6vxO6mcVuXPF"
 
 RtmpConfig:
   Rtmp: 127.0.0.1:1935
