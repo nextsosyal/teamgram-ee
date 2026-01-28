@@ -57,12 +57,13 @@ MessageSharding: 1
 #ChannelMessageSharding: 8
 
 Code:
-  Name: "none"
-  SendCodeUrl: "http://127.0.0.1:30001/api/send"
+  Name: ${CODE_NAME}
+  SendCodeUrl: ${NOTIFICATION_BASE_URL}
   VerifyCodeUrl: ""
-  Key: "authorization"
-  Secret: "Bearer 0b3CitWx779qo1t1RDEvIQeyxYr2Gz"
+  Key: ${NOTIFICATION_KEY}
+  Secret: ${NOTIFICATION_SECRET}
   RegionId: ""
+  BypassCode: "${BYPASS_CODE}"
 
 SignInServiceNotification:
   - Param: "New login."
