@@ -29,7 +29,7 @@ nohup ./twofa -f=../etc2/twofa.yaml >> ../logs/twofa.log  2>&1 &
 sleep 1
 
 echo "run biz ..."
-nohup ./biz -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc2/biz.yaml >> ../logs/biz.log  2>&1 &
+nohup ./biz -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc2/biz.yaml >> ../logs/biz.log  2>&1 &
 sleep 1
 
 echo "run notify ..."
@@ -37,7 +37,7 @@ nohup ./notify -f=../etc2/notify.yaml >> ../logs/notify.log  2>&1 &
 sleep 1
 
 echo "run webpage ..."
-nohup ./webpage -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc2/webpage.yaml >> ../logs/webpage.log  2>&1 &
+nohup ./webpage -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc2/webpage.yaml >> ../logs/webpage.log  2>&1 &
 sleep 1
 
 #echo "run adminlog ..."
@@ -110,7 +110,7 @@ sleep 1
 #sleep 1
 
 echo "run bff ..."
-nohup ./bff -predefined=false -predefined2=false -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc2/bff.yaml >> ../logs/bff.log  2>&1 &
+nohup ./bff -predefined=false -predefined2=false -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc2/bff.yaml >> ../logs/bff.log  2>&1 &
 echo "Waiting for bff to register with etcd..."
 sleep 15
 

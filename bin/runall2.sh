@@ -29,7 +29,7 @@ nohup ./twofa -f=../etc/twofa.yaml >> ../logs/twofa.log 2>&1 &
 sleep 1
 
 echo "run biz ..."
-nohup ./biz -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc/biz.yaml >> ../logs/biz.log 2>&1 &
+nohup ./biz -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc/biz.yaml >> ../logs/biz.log 2>&1 &
 sleep 1
 
 echo "run notify ..."
@@ -37,7 +37,7 @@ nohup ./notify -f=../etc/notify.yaml >> ../logs/notify.log 2>&1 &
 sleep 1
 
 echo "run webpage ..."
-nohup ./webpage -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc/webpage.yaml >> ../logs/webpage.log 2>&1 &
+nohup ./webpage -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc/webpage.yaml >> ../logs/webpage.log 2>&1 &
 sleep 1
 
 echo "run adminlog ..."
@@ -90,7 +90,7 @@ nohup ./sfu -f=../etc/sfu.yaml >> ../logs/sfu.log 2>&1 &
 sleep 1
 
 echo "run botfather ..."
-nohup ./botfather -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc/botfather.yaml >> ../logs/botfather.log 2>&1 &
+nohup ./botfather -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc/botfather.yaml >> ../logs/botfather.log 2>&1 &
 sleep 1
 
 echo "run gif ..."
@@ -136,7 +136,7 @@ sleep 1
 echo "run bff ..."
 #nohup ./bff -predefined=false -predefined2=false -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -store_product_annual="com.sends.telegramPremium.annual" -store_product_monthly="com.sends.telegramPremium.monthly" -f=../etc/bff.yaml >> ../logs/bff.log 2>&1 &
 #nohup ./bff -predefined=false -predefined2=false -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -store_product_annual="com.sends.annual" -store_product_monthly="com.sends.monthly" -f=../etc/bff.yaml >> ../logs/bff.log 2>&1 &
-nohup ./bff -predefined=false -predefined2=false -app_name="Teamgram" -t.me="teamgram.me" -site_name="teamgram.net" -f=../etc/bff.yaml >> ../logs/bff.log 2>&1 &
+nohup ./bff -predefined=false -predefined2=false -app_name="Tekir" -t.me="tekir.app" -site_name="tekir.app" -f=../etc/bff.yaml >> ../logs/bff.log 2>&1 &
 sleep 5
 
 echo "run session ..."
@@ -157,7 +157,7 @@ sleep 1
 #sleep 1
 
 echo "run tgme ..."
-nohup ./tgme -app_name="Teamgram" -t.me="teamgram.me" -tg=tg2 -cdn="/x" -site_name="teamgram.net" -f=../etc/tgme.yaml >> ../logs/tgme.log 2>&1 &
+nohup ./tgme -app_name="Tekir" -t.me="tekir.app" -tg=tg2 -cdn="/x" -site_name="tekir.app" -f=../etc/tgme.yaml >> ../logs/tgme.log 2>&1 &
 sleep 1
 
 echo "run botway ..."
