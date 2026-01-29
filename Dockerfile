@@ -1,4 +1,4 @@
-FROM golang:1.21 AS builder
+FROM golang:1.21.13 AS builder
 WORKDIR /opt/data/teamgram
 COPY . .
 RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
