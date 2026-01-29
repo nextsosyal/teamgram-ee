@@ -37,7 +37,7 @@ WebrtcConnections:
 - bin/run-docker-phone.sh
 ```
 echo "run turnserver ..."
-turnserver -v -r 192.168.10.150:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
+turnserver -v -r 192.168.10.106:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
 ```
 
 **Note** you need to change the `-r` option to your server's public IP address.
@@ -58,8 +58,8 @@ TransportListenIp: 0.0.0.0
 
 SFUConf:
   #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
-  #WorkerBin: "/Users/wubenqi/go/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Debug/mediasoup-worker"
-  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
+  #WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party2/mediasoup/worker/out/Debug/mediasoup-worker"
+  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party2/mediasoup/worker/out/Release/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
     - Ip: 0.0.0.0
