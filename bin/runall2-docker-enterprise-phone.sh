@@ -142,4 +142,4 @@ echo "run wsserver ..."
 nohup ./wsserver -f=../etc2/wsserver.yaml >> ../logs/wsserver.log 2>&1 &
 
 echo "run turnserver ..."
-turnserver -v -r 192.168.10.150:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
+turnserver -v -r 192.168.10.106:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log

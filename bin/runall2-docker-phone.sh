@@ -54,4 +54,4 @@ GNET_LOGGING_LEVEL=-1 nohup ./gnetway -f=../etc2/gnetway.yaml >> ../logs/gnetway
 sleep 1
 
 echo "run turnserver ..."
-turnserver -v -r 192.168.10.150:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
+turnserver -v -r 192.168.10.106:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log

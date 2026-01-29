@@ -1,4 +1,4 @@
-FROM golang:1.20.14 AS builder
+FROM golang:1.21.13 AS builder
 WORKDIR /opt/data/teamgram
 COPY . .
 RUN ./build-phone.sh
@@ -27,5 +27,5 @@ RUN make
 
 WORKDIR /opt/data/teamgram
 
-RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh
-ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
+RUN chmod +x /opt/data/teamgram/docker/entrypoint-phone.sh
+ENTRYPOINT /opt/data/teamgram/docker/entrypoint-phone.sh

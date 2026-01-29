@@ -35,14 +35,14 @@ TransportListenIp: 0.0.0.0 # internal IP
 
 SFUConf:
   #WorkerBin: "/opt/data/teamgram/bin/worker/mediasoup-worker"
-  #WorkerBin: "/Users/wubenqi/go/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Debug/mediasoup-worker"
-  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party/mediasoup/worker/out/Release/mediasoup-worker"
+  #WorkerBin: "/Users/wubenqi/go/src/teamgram.io/teamcalls-server/third_party2/mediasoup/worker/out/Debug/mediasoup-worker"
+  WorkerBin: "/opt/data/teamgram/src/teamgram.io/teamcalls-server/third_party2/mediasoup/worker/out/Release/mediasoup-worker"
   NumWorkers: 1
   WebRtcTransportListenIps:
     - Ip: 0.0.0.0 # internal IP
-      AnnouncedIp: 192.168.10.105 # internet/public IP
+      AnnouncedIp: 192.168.10.106 # internet/public IP
   PlainTransportListenIp:
     Ip: 0.0.0.0 # internal IP
-    AnnouncedIp: 192.168.10.105 # internet/public IP
+    AnnouncedIp: 192.168.10.106 # internet/public IP
   WebRtcMinPort: 55000
   WebRtcMaxPort: 55600
