@@ -39,7 +39,7 @@ KV:
 #  - Host: 127.0.0.1:7002
 #    Type: cluster
 
-MessageSharding: 8
+MessageSharding: 1
 
 InboxConsumer:
   Topics:
