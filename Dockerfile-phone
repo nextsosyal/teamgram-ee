@@ -22,7 +22,7 @@ ENV LANG="C.UTF-8"
 ENV CC="clang"
 ENV CXX="clang++"
 
-RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh && \
+RUN chmod +x /opt/data/teamgram/docker/entrypoint-phone.sh && \
     chmod +x /opt/data/teamgram/bin/*.sh && \
     mkdir -p /opt/data/teamgram/logs /opt/data/teamgram/etc2
 
