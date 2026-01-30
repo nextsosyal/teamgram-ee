@@ -28,6 +28,13 @@ SyncConsumer:
     - 127.0.0.1:9092
   Group: "Sync-MainCommunity-S"
 
+PushConsumer:
+  Topics:
+    - "Push-T"
+  Brokers:
+    - 127.0.0.1:9092
+  Group: "Push-MainCommunity-S"
+
 Routine:
   Chan: 16
   Size: 100
