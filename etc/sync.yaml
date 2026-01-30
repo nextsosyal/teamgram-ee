@@ -92,3 +92,8 @@ BotsClient:
   Brokers:
     - 127.0.0.1:9092
 
+PushNotification:
+  Enabled: ${PUSH_ENABLED:true}
+  NotificationService: ${NOTIFICATION_BASE_URL}
+  Key: ${NOTIFICATION_KEY}
+  Secret: ${NOTIFICATION_SECRET}
