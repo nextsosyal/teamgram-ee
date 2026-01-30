@@ -53,5 +53,9 @@ echo "run gateway ..."
 GNET_LOGGING_LEVEL=-1 nohup ./gnetway -f=../etc2/gnetway.yaml >> ../logs/gnetway.log 2>&1 &
 sleep 1
 
+echo "run admin ..."
+nohup ./admin -f=../etc2/admin.yaml >> ../logs/admin.log  2>&1 &
+sleep 1
+
 echo "run turnserver ..."
 turnserver -v -r 213.250.137.204:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
