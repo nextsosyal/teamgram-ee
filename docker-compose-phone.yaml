@@ -34,6 +34,20 @@ services:
       - "63500-63600:63500-63600/udp"
     networks:
       - teamgram_net
+
+  teamgram_client:
+    build:
+      context: /root/teamgram2/teamgram-client
+      dockerfile: Dockerfile
+      args:
+        TELEGRAM_API_ID: "${TELEGRAM_API_ID}"
+        TELEGRAM_API_HASH: "${TELEGRAM_API_HASH}"
+    image: teamgram-client:chore
+    container_name: teamgram-client
+    restart: always
+    networks:
+      - teamgram_net
+
   nginx:
     image: nginx:alpine
     container_name: teamgram2-nginx
