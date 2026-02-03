@@ -4,3 +4,6 @@
 [submodule "src/teamgram.io/teamcalls-server"]
 	path = src/teamgram.io/teamcalls-server
 	url = https://repo.teamgram.io/teamgram-server/teamcalls-server
+[submodule "src/teamgram.io/enterprise"]
+	path = src/teamgram.io/enterprise
+	url = https://repo.teamgram.io/teamgram-server/enterprise.git
