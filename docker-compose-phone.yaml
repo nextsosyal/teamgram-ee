@@ -21,7 +21,7 @@ services:
       - "20110:20110"
       - "5222:5222"
       - "8801:8801"
-      - "8088:8088"   # Admin API
+      #- "8088:8088"   # Admin API
       - "20660:20660"
       - "20650:20650"
       - "20030:20030"
@@ -34,27 +34,15 @@ services:
       - "63500-63600:63500-63600/udp"
     networks:
       - teamgram_net
-
-  teamgram_client:
-    build:
-      context: /root/teamgram2/teamgram-client
-      dockerfile: Dockerfile
-      args:
-        TELEGRAM_API_ID: "${TELEGRAM_API_ID}"
-        TELEGRAM_API_HASH: "${TELEGRAM_API_HASH}"
-    image: teamgram-client:chore
-    container_name: teamgram-client
-    restart: always
-    networks:
-      - teamgram_net
-
   nginx:
     image: nginx:alpine
     container_name: teamgram2-nginx
     restart: always
     depends_on:
       - teamgram_tweb
+      - teamgram
     ports:
+      - "8088:8088"
       - "80:80"
       # İstersen dışarıda 11443'ten gelsin diye 443'ü 11443'e mapliyorum:
       - "443:443"
