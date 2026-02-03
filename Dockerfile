@@ -25,5 +25,6 @@ ENV CXX="clang++"
 
 RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh && \
 	chmod +x /opt/data/teamgram/bin/*.sh && \
-    mkdir -p /opt/data/teamgram/logs /opt/data/teamgram/etc2 && \
-ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
+    mkdir -p /opt/data/teamgram/logs /opt/data/teamgram/etc2
+
+ENTRYPOINT ["/opt/data/teamgram/docker/entrypoint.sh"]
