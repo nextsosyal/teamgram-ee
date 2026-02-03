@@ -3,7 +3,7 @@ WORKDIR /opt/data/teamgram
 COPY . .
 RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 WORKDIR /opt/data/teamgram
 COPY --from=builder /opt/data/teamgram/ /opt/data/teamgram/
 
@@ -23,5 +23,6 @@ ENV CC="clang"
 ENV CXX="clang++"
 
 
-RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh
+RUN chmod +x /opt/data/teamgram/docker/entrypoint.sh && \
+    mkdir -p /opt/data/teamgram/logs /opt/data/teamgram/etc2 && \
 ENTRYPOINT /opt/data/teamgram/docker/entrypoint.sh
