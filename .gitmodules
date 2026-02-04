@@ -6,4 +6,4 @@
 	url = https://github.com/nextsosyal/tekir-teamcalls-server.git
 [submodule "src/teamgram.io/enterprise"]
 	path = src/teamgram.io/enterprise
-	url = https://repo.teamgram.io/teamgram-server/enterprise.git
+	url = https://github.com/nextsosyal/tekir-enterprise
