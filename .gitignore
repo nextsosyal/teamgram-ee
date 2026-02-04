@@ -24,6 +24,7 @@ Thumbs.db
 *.swo
 *.proto
 *.tl
+.env
 
 kafka*
 
