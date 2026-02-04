@@ -96,6 +96,12 @@ SignInMessage:
       - "#app_name"
       - "#app_name"
 
+UserClient:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: service.biz_service
+
 BizServiceClient:
   Etcd:
     Hosts:
