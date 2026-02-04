@@ -1,29 +1,31 @@
 # ============ BUILDER ============
 FROM golang:1.21.13 AS builder
 
-# Git yükle
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 
-# Git credentials (CI/CD'den ARG olarak gelecek)
-ARG GIT_USERNAME
-ARG GIT_TOKEN
+# Sadece GitHub token
+ARG GITHUB_TOKEN
 
-# Private repo için auth ayarla
-RUN git config --global url."https://${GIT_USERNAME}:${GIT_TOKEN}@repo.teamgram.io/".insteadOf "https://repo.teamgram.io/"
+# Docker build'de username/password sormasın
+ENV GIT_TERMINAL_PROMPT=0
+
+# GitHub HTTPS URL'lerini token'lı hale getir (submodule clone için)
+RUN git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 
 WORKDIR /opt/data/teamgram
 
-# Önce .git ve .gitmodules'ı kopyala
 COPY .git .git
 COPY .gitmodules .gitmodules
 
-# Submodule'ları çek
-RUN git submodule update --init --recursive
+RUN git submodule sync --recursive \
+ && git submodule update --init --recursive
 
-# Geri kalan dosyaları kopyala
 COPY . .
 
 RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
+
 
 # ============ RUNTIME ============
 FROM debian:bookworm-slim
@@ -32,7 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     ffmpeg \
     coturn \
-    && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/data/teamgram
 
@@ -46,5 +48,4 @@ ARG TARGET_SERVICE=bff
 ENV TARGET_SERVICE=${TARGET_SERVICE}
 
 WORKDIR /opt/data/teamgram/bin
-
 CMD ["sh", "-c", "./${TARGET_SERVICE} -f=../etc2/${TARGET_SERVICE}.yaml"]
