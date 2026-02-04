@@ -1,6 +1,8 @@
 services:
   teamgram:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "10443:10443"
