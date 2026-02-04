@@ -95,6 +95,6 @@ PushFCM:
 UseTPNS: true
 TPNSBoundId: "com.tekir.app"
 TPNSDevelopment: false
-TPNSVoipBoundId: ""
+TPNSVoipBoundId: "com.tekir.app"
 TPNSHosts:
  - "http://127.0.0.1:18088/api/push"
