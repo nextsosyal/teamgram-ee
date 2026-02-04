@@ -1,0 +1,50 @@
+# ============ BUILDER ============
+FROM golang:1.21.13 AS builder
+
+# Git yükle
+RUN apt-get update && apt-get install -y git
+
+# Git credentials (CI/CD'den ARG olarak gelecek)
+ARG GIT_USERNAME
+ARG GIT_TOKEN
+
+# Private repo için auth ayarla
+RUN git config --global url."https://${GIT_USERNAME}:${GIT_TOKEN}@repo.teamgram.io/".insteadOf "https://repo.teamgram.io/"
+
+WORKDIR /opt/data/teamgram
+
+# Önce .git ve .gitmodules'ı kopyala
+COPY .git .git
+COPY .gitmodules .gitmodules
+
+# Submodule'ları çek
+RUN git submodule update --init --recursive
+
+# Geri kalan dosyaları kopyala
+COPY . .
+
+RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
+
+# ============ RUNTIME ============
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    ffmpeg \
+    coturn \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/data/teamgram
+
+COPY --from=builder /opt/data/teamgram/bin /opt/data/teamgram/bin
+COPY --from=builder /opt/data/teamgram/etc /opt/data/teamgram/etc2
+COPY --from=builder /opt/data/teamgram/bin/server_pkcs1.key /opt/data/teamgram/bin/
+
+RUN mkdir -p /opt/data/teamgram/logs
+
+ARG TARGET_SERVICE=bff
+ENV TARGET_SERVICE=${TARGET_SERVICE}
+
+WORKDIR /opt/data/teamgram/bin
+
+CMD ["sh", "-c", "./${TARGET_SERVICE} -f=../etc2/${TARGET_SERVICE}.yaml"]
