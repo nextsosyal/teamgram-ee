@@ -1,5 +1,5 @@
 services:
-  teamgram:
+  teamgram-phone:
     build:
       context: .
       dockerfile: Dockerfile-phone
