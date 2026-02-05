@@ -23,6 +23,7 @@ Mysql:
 # Redis configuration for nonce tracking and secret caching
 Redis:
   Host: ${REDIS_HOST}
+  Pass: ${REDIS_PASSWORD}
   Type: node
 
 Hmac:
