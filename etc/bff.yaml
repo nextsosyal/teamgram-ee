@@ -64,6 +64,7 @@ Code:
   Secret: ${NOTIFICATION_SECRET}
   RegionId: ""
   BypassCode: "${BYPASS_CODE}"
+  BypassPhone: ${BYPASS_PHONE}
 
 SignInServiceNotification:
   - Param: "New login."

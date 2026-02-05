@@ -9,6 +9,7 @@ services:
       - NOTIFICATION_SECRET=${NOTIFICATION_SECRET}
       - PUSH_ENABLED=${PUSH_ENABLED:-true}
       - BYPASS_CODE=${BYPASS_CODE}
+      - BYPASS_PHONE=${BYPASS_PHONE}
     ports:
       - "10443:10443"
       - "11443:11443"

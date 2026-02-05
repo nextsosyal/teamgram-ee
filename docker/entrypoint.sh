@@ -27,6 +27,33 @@ export PUSH_ENABLED=${PUSH_ENABLED:-"true"}
 
 # Bypass Code environment variables
 export BYPASS_CODE=${BYPASS_CODE:-""}
+export BYPASS_PHONE=${BYPASS_PHONE:-""}
+
+# BYPASS_PHONE'u YAML inline array formatına çevir: val1,val2 -> ["val1","val2"]
+convert_to_yaml_inline_array() {
+  local input="$1"
+  if [ -z "$input" ]; then
+    echo "[]"
+    return
+  fi
+  local result="["
+  local first=true
+  IFS=',' read -ra items <<< "$input"
+  for item in "${items[@]}"; do
+    item=$(echo "$item" | xargs)  # trim whitespace
+    if [ -n "$item" ]; then
+      if [ "$first" = true ]; then
+        first=false
+      else
+        result="${result},"
+      fi
+      result="${result}\"${item}\""
+    fi
+  done
+  result="${result}]"
+  echo "$result"
+}
+export BYPASS_PHONE_YAML=$(convert_to_yaml_inline_array "$BYPASS_PHONE")
 
 # create configs from config templates.
 createConfigs() {
@@ -50,6 +77,7 @@ createConfigs() {
       | sed 's#\${NOTIFICATION_SECRET}#'"$NOTIFICATION_SECRET"'#g' \
       | sed 's#\${PUSH_ENABLED:[^}]*}#'"$PUSH_ENABLED"'#g' \
       | sed 's#\${BYPASS_CODE}#'"$BYPASS_CODE"'#g' \
+      | sed 's#\${BYPASS_PHONE}#'"$BYPASS_PHONE_YAML"'#g' \
       | cat > $CONFIG_TARGET_DIR/$file
   done
 }
