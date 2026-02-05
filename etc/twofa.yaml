@@ -52,6 +52,6 @@ Mail:
   Password: "uoeoguzhuonibiff"
   From: "15069338@qq.com"
   ConfirmSubject: "Your Code - %s"
-  ConfirmCodeTemplate: "Your code is: %s. Use it to verify your email and activate two-step verification in Teamgram Messenger.\n\nIf you didn't request this, simply ignore this message.\n\nYours,\nThe Teamgram Team"
+  ConfirmCodeTemplate: "Your code is: %s. Use it to verify your email and activate two-step verification in Tekir.\n\nIf you didn't request this, simply ignore this message.\n\nYours,\nThe Tekir Team"
   RecoverySubject: "Your Recovery Code - %s"
-  RecoveryCodeTemplate: "Your code is: %s. Use it to disable your password and access your Teamgram account.\n\nIf you didn't request to restore access to your account, go to Teamgram Settings > Devices (or Privacy & Security > Active Sessions) and terminate any sessions you don’t recognize.\n\nYours,\nThe Teamgram Team"
+  RecoveryCodeTemplate: "Your code is: %s. Use it to disable your password and access your Tekir account.\n\nIf you didn't request to restore access to your account, go to Tekir Settings > Devices (or Privacy & Security > Active Sessions) and terminate any sessions you don’t recognize.\n\nYours,\nThe Tekir Team"
