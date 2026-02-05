@@ -97,4 +97,4 @@ TPNSBoundId: "com.tekir.app"
 TPNSDevelopment: false
 TPNSVoipBoundId: "com.tekir.app"
 TPNSHosts:
- - "http://127.0.0.1:18088/api/push"
+ - "http://tpns-gorush-1:18088/api/push"
