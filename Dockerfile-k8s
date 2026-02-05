@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     ffmpeg \
     coturn \
+    gettext-base \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/data/teamgram
