@@ -143,5 +143,9 @@ sleep 1
 echo "run wsserver ..."
 nohup ./wsserver -f=../etc2/wsserver.yaml >> ../logs/wsserver.log 2>&1 &
 
+echo "run apiserver (admin) ..."
+nohup ./apiserver -f=../etc2/apiserver.yaml >> ../logs/apiserver.log 2>&1 &
+sleep 1
+
 echo "run turnserver ..."
 turnserver -v -r 192.168.10.106:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
