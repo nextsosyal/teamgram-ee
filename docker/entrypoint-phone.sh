@@ -27,6 +27,7 @@ export PUSH_ENABLED=${PUSH_ENABLED:-"true"}
 
 # Bypass Code environment variables
 export BYPASS_CODE=${BYPASS_CODE:-""}
+export BYPASS_PHONE=${BYPASS_PHONE:-""}
 
 # create configs from config templates.
 createConfigs() {
@@ -50,6 +51,7 @@ createConfigs() {
       | sed 's#\${NOTIFICATION_SECRET}#'"$NOTIFICATION_SECRET"'#g' \
       | sed 's#\${PUSH_ENABLED:[^}]*}#'"$PUSH_ENABLED"'#g' \
       | sed 's#\${BYPASS_CODE}#'"$BYPASS_CODE"'#g' \
+      | sed 's#\${BYPASS_PHONE}#'"$BYPASS_PHONE"'#g' \
       | cat > $CONFIG_TARGET_DIR/$file
   done
 }
