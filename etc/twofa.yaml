@@ -45,14 +45,14 @@ IdgenClient:
       - 127.0.0.1:2379
     Key: service.idgen
 
-# Email gönderimi devre dışı bırakıldı
-#Mail:
-#  Host: "smtp.qq.com"
-#  Port: 465
-#  Username: "15069338@qq.com"
-#  Password: "uoeoguzhuonibiff"
-#  From: "15069338@qq.com"
-#  ConfirmSubject: "Your Code - %s"
-#  ConfirmCodeTemplate: "Your code is: %s. Use it to verify your email and activate two-step verification in Tekir.\n\nIf you didn't request this, simply ignore this message.\n\nYours,\nThe Tekir Team"
-#  RecoverySubject: "Your Recovery Code - %s"
-#  RecoveryCodeTemplate: "Your code is: %s. Use it to disable your password and access your Tekir account.\n\nIf you didn't request to restore access to your account, go to Tekir Settings > Devices (or Privacy & Security > Active Sessions) and terminate any sessions you don't recognize.\n\nYours,\nThe Tekir Team"
+Mail:
+  Enabled: false
+  Host: "smtp.qq.com"
+  Port: 465
+  Username: "15069338@qq.com"
+  Password: "uoeoguzhuonibiff"
+  From: "15069338@qq.com"
+  ConfirmSubject: "Your Code - %s"
+  ConfirmCodeTemplate: "Your code is: %s. Use it to verify your email and activate two-step verification in Tekir.\n\nIf you didn't request this, simply ignore this message.\n\nYours,\nThe Tekir Team"
+  RecoverySubject: "Your Recovery Code - %s"
+  RecoveryCodeTemplate: "Your code is: %s. Use it to disable your password and access your Tekir account.\n\nIf you didn't request to restore access to your account, go to Tekir Settings > Devices (or Privacy & Security > Active Sessions) and terminate any sessions you don't recognize.\n\nYours,\nThe Tekir Team"
