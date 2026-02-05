@@ -1,7 +1,3 @@
-# CMS Service Configuration
-# Content Management System for admin features
-# Simplified service - only MySQL and Redis, no RPC dependencies
-
 Name: cms
 Host: 0.0.0.0
 Port: 18002
