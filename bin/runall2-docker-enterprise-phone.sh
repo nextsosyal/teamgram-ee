@@ -142,6 +142,7 @@ sleep 1
 
 echo "run wsserver ..."
 nohup ./wsserver -f=../etc2/wsserver.yaml >> ../logs/wsserver.log 2>&1 &
+sleep 1
 
 echo "run cms ..."
 nohup ./cms -f=../etc2/cms.yaml >> ../logs/cms.log 2>&1 &
