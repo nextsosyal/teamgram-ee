@@ -12,7 +12,7 @@ Http:
     Level: info
 
 Mysql:
-  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4&parseTime=true
+  DSN: ${MYSQL_URI}
   Active: 64
   Idle: 64
   IdleTimeout: 4h
@@ -22,7 +22,7 @@ Mysql:
 
 # Redis configuration for nonce tracking and secret caching
 Redis:
-  Host: 127.0.0.1:6379
+  Host: ${REDIS_HOST}
   Type: node
 
 Hmac:
