@@ -90,6 +90,7 @@ src/*
 !src/github.com/teamgram
 !src/github.com/teamgram/**
 !src/teamgram.io/**
+!src/initdata/**
 
 data/*
 !data/.gitkeeper
