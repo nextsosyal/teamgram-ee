@@ -1,0 +1,34 @@
+# CMS Service Configuration
+# Content Management System for admin features
+# Simplified service - only MySQL and Redis, no RPC dependencies
+
+Name: cms
+Host: 0.0.0.0
+Port: 18002
+Timeout: 0
+Log:
+  ServiceName: cms
+  Mode: file
+  Path: ../logs/cms
+  Level: debug
+
+# Direct MySQL access for CMS features
+Mysql:
+  DSN: root:@tcp(127.0.0.1:3306)/teamgram?charset=utf8mb4
+  Active: 16
+  Idle: 8
+  IdleTimeout: 300s
+
+# Redis for nonce validation and caching
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+
+# HMAC Authentication configuration
+Hmac:
+  Enabled: false
+  ClockSkew: 600
+  NonceTTL: 300
+  SecretCacheTTL: 300
+  KekB64:

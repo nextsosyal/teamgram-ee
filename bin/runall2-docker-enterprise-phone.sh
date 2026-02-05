@@ -147,5 +147,9 @@ echo "run apiserver (admin) ..."
 nohup ./apiserver -f=../etc2/apiserver.yaml >> ../logs/apiserver.log 2>&1 &
 sleep 1
 
+echo "run cms ..."
+nohup ./cms -f=../etc2/cms.yaml >> ../logs/cms.log 2>&1 &
+sleep 1
+
 echo "run turnserver ..."
 turnserver -v -r 192.168.10.106:3478 -a -o -c ../etc2/turnserver.conf --log-file ../logs/turnserver.log
