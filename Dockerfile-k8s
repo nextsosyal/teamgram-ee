@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Sadece GitHub token
 ARG GITHUB_TOKEN
 
+ARG TARGET_SERVICE=bff
+ENV TARGET_SERVICE=${TARGET_SERVICE}
+
 # Docker build'de username/password sormasın
 ENV GIT_TERMINAL_PROMPT=0
 
@@ -24,7 +27,7 @@ RUN git submodule sync --recursive \
 
 COPY . .
 
-RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh
+RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh ${TARGET_SERVICE}
 
 
 # ============ RUNTIME ============
