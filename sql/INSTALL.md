@@ -40,4 +40,11 @@ mysql -uteamgram -pteamgram teamgram < migrate-20250414.sql
 mysql -uteamgram -pteamgram teamgram < migrate-20250415.sql
 mysql -uteamgram -pteamgram teamgram < migrate-20250427.sql
 mysql -uteamgram -pteamgram teamgram < migrate-20250529.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251008.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251125.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251210.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251211.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251213.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251216.sql
+mysql -uteamgram -pteamgram teamgram < migrate-20251219.sql
 ```
