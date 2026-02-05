@@ -27,7 +27,7 @@ RUN git submodule sync --recursive \
 
 COPY . .
 
-RUN chmod +x ./build-enterprise-phone.sh && ./build-enterprise-phone.sh ${TARGET_SERVICE}
+RUN chmod +x ./build-enterprise-phone-service-based.sh && ./build-enterprise-phone-service-based.sh ${TARGET_SERVICE}
 
 
 # ============ RUNTIME ============
