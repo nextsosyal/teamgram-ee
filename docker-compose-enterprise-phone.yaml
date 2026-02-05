@@ -1,8 +1,6 @@
 services:
-  teamgram-enterprise-phone:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  teamgram:
+    build: .
     restart: always
     environment:
       - CODE_NAME=${CODE_NAME}
@@ -39,30 +37,6 @@ services:
       - "21530:21530"
       - "20400:20400"
       - "21558:21558"
-    networks:
-      - teamgram_net
-  nginx:
-    image: nginx:alpine
-    container_name: teamgram2-nginx
-    restart: always
-    depends_on:
-      - teamgram_tweb
-      - teamgram
-    ports:
-      - "8088:8088"
-      - "80:80"
-      # İstersen dışarıda 11443'ten gelsin diye 443'ü 11443'e mapliyorum:
-      - "443:443"
-    volumes:
-      - ./privacy.html:/usr/share/nginx/html/privacy.html:ro
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./SSL:/etc/nginx/ssl:ro
-    networks:
-      - teamgram_net
-
-  teamgram_tweb:
-    image: teamgram-tweb:latest
-    restart: always
     networks:
       - teamgram_net
   nginx:
