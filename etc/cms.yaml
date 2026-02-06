@@ -23,7 +23,7 @@ Redis:
 
 # HMAC Authentication configuration
 Hmac:
-  Enabled: false
+  Enabled: true
   ClockSkew: 600
   NonceTTL: 300
   SecretCacheTTL: 300
